@@ -1,7 +1,7 @@
 package main
 
-import "github.com/joegrn/dns/pkg/server"
+import dns "github.com/joegrn/dns/pkg"
 
 func main() {
-	server.Serve()
+	dns.Serve()
 }

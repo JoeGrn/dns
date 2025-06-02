@@ -1,4 +1,4 @@
-package main
+package dns
 
 const (
 	QR_BIT     = 15

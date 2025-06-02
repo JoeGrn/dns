@@ -36,4 +36,4 @@ docker-build:
 	${DOCKERBUILD} -t dns .
 
 docker-run:
-	${DOCKERRUN} -p 8080:8080 dns
+	${DOCKERRUN} -p 2053:2053/udp dns
