@@ -127,12 +127,12 @@ func TestWriteDNSHeader(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			buffer := new(bytes.Buffer)
 			err := dns.WriteDNSHeader(buffer, tt.header)
-			
+
 			if (err != nil) != tt.wantErr {
 				t.Errorf("WriteDNSHeader() error = %v, wantErr %v", err, tt.wantErr)
 				return
 			}
-			
+
 			if !reflect.DeepEqual(buffer.Bytes(), tt.want) {
 				t.Errorf("WriteDNSHeader() = %v, want %v", buffer.Bytes(), tt.want)
 			}

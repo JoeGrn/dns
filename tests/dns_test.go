@@ -4,7 +4,7 @@ import (
 	"net"
 	"reflect"
 	"testing"
-	
+
 	dns "github.com/joegrn/dns/pkg"
 )
 

@@ -4,7 +4,7 @@ import (
 	"bytes"
 	"reflect"
 	"testing"
-	
+
 	dns "github.com/joegrn/dns/pkg"
 )
 

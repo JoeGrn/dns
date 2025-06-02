@@ -200,12 +200,12 @@ func TestMarshalFlags(t *testing.T) {
 func TestBitManipulation(t *testing.T) {
 	// For these tests, we need to directly access the bit manipulation functions,
 	// but since they're unexported, we'll test them indirectly through the Marshal/Unmarshal functions
-	
+
 	t.Run("getBit", func(t *testing.T) {
 		// Test if proper bits are extracted from flags
 		flags := dns.Flags{QR: true, RD: true}
 		marshaled := dns.MarshalFlags(flags)
-		
+
 		// Assert QR and RD bits are set in the marshaled value
 		if marshaled&0x8000 == 0 {
 			t.Error("QR bit not properly set")
@@ -214,11 +214,11 @@ func TestBitManipulation(t *testing.T) {
 			t.Error("RD bit not properly set")
 		}
 	})
-	
+
 	t.Run("setBit", func(t *testing.T) {
 		// Test by unmarshaling flags with specific bits set
 		unmarshaled := dns.UnmarshalFlags([]byte{0x81, 0x00}) // QR and RD set
-		
+
 		if !unmarshaled.QR {
 			t.Error("QR bit not correctly unmarshaled")
 		}
@@ -226,21 +226,21 @@ func TestBitManipulation(t *testing.T) {
 			t.Error("RD bit not correctly unmarshaled")
 		}
 	})
-	
+
 	t.Run("getField", func(t *testing.T) {
 		// Test opcode field extraction
 		unmarshaled := dns.UnmarshalFlags([]byte{0x28, 0x00}) // Opcode 5
-		
+
 		if unmarshaled.OpCode != 5 {
 			t.Errorf("OpCode not correctly extracted, got %d, want 5", unmarshaled.OpCode)
 		}
 	})
-	
+
 	t.Run("setField", func(t *testing.T) {
 		// Test setting RCODE field
 		flags := dns.Flags{RCODE: 3}
 		marshaled := dns.MarshalFlags(flags)
-		
+
 		if marshaled&0x000F != 3 {
 			t.Errorf("RCODE not correctly set, got %d, want 3", marshaled&0x000F)
 		}
