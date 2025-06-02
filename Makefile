@@ -19,7 +19,7 @@ build:
 	$(GOBUILD) -o ./${BUILD_DIR}/$(BINARY_NAME) -v $(ENTRY_POINT)
 
 test:
-	$(GOTEST) -v ./...
+	$(GOTEST) -v ./pkg ./tests
 
 clean:
 	$(GOCLEAN)

@@ -51,7 +51,11 @@ func UnmarshalFlags(buffer []byte) Flags {
 	flags := uint16(buffer[0])<<8 | uint16(buffer[1])
 
 	opcode := getField(flags, OPCODE_MASK, OPCODE_POS)
-	var rcode uint8
+
+	// Get the RCODE directly from the flags
+	rcode := getField(flags, RCODE_MASK, RCODE_POS)
+
+	// Override with 4 (Not Implemented) if opcode is not standard
 	if opcode != 0 {
 		rcode = 4
 	}
